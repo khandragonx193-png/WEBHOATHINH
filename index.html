@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phim Hoạt Hình Thiếu Nhi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Logo">
+            <span>Hoạt Hình Vui</span>
+        </div>
+    </header>
+
+    <!-- ========== HEAD-LINK (Menu điều hướng) ========== -->
+    <nav class="head-link">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Phim mới</a></li>
+            <li><a href="#">Xem nhiều</a></li>
+            <li><a href="#">Thể loại</a></li>
+            <li><a href="#">Tìm kiếm</a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== CONTENT ========== -->
+    <div class="content">
+        <!-- Left Content: Danh sách video -->
+        <div class="left-content">
+            <h3>Danh sách phim</h3>
+            <ul class="video-list">
+                <li class="active" onclick="playVideo(0)">
+                    <img src="https://img.youtube.com/vi/C4W7xXXbbYY/mqdefault.jpg" alt="Peppa Pig">
+                    <span>Peppa Pig - Tập 1</span>
+                </li>
+                <li onclick="playVideo(1)">
+                    <img src="https://img.youtube.com/vi/XqZsoesa55w/mqdefault.jpg" alt="Baby Shark">
+                    <span>Baby Shark Dance</span>
+                </li>
+                <li onclick="playVideo(2)">
+                    <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg" alt="Despacito">
+                    <span>Despacito - Kids Version</span>
+                </li>
+                <li onclick="playVideo(3)">
+                    <img src="https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg" alt="Gangnam Style">
+                    <span>Gangnam Style Kids</span>
+                </li>
+                <li onclick="playVideo(4)">
+                    <img src="https://img.youtube.com/vi/2Vv-BfVoq4g/mqdefault.jpg" alt="Perfect">
+                    <span>Perfect - Kids Cover</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right Content: Khu vực xem video -->
+        <div class="right-content">
+            <h2 id="video-title">Peppa Pig - Tập 1</h2>
+            
+            <!-- Video YouTube (iframe) -->
+            <div class="video-wrapper">
+                <iframe id="main-video" 
+                        src="https://www.youtube.com/embed/C4W7xXXbbYY" 
+                        title="Video hoạt hình"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Video HTML5 (ví dụ thêm) -->
+            <div class="html5-video" style="margin-top: 20px;">
+                <h3>Video HTML5 mẫu</h3>
+                <video controls width="100%">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Trình duyệt của bạn không hỗ trợ thẻ video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p>&copy; 2025 Hoạt Hình Vui - Website phim hoạt hình dành cho trẻ em. Không quảng cáo. Nội dung được chọn lọc.</p>
+    </footer>
+
+    <script>
+        // Danh sách video YouTube
+        const videos = [
+            {
+                id: "C4W7xXXbbYY",
+                title: "Peppa Pig - Tập 1"
+            },
+            {
+                id: "XqZsoesa55w",
+                title: "Baby Shark Dance"
+            },
+            {
+                id: "kJQP7kiw5Fk",
+                title: "Despacito - Kids Version"
+            },
+            {
+                id: "9bZkp7q19f0",
+                title: "Gangnam Style Kids"
+            },
+            {
+                id: "2Vv-BfVoq4g",
+                title: "Perfect - Kids Cover"
+            }
+        ];
+
+        function playVideo(index) {
+            const video = videos[index];
+            document.getElementById("main-video").src = `https://www.youtube.com/embed/${video.id}`;
+            document.getElementById("video-title").textContent = video.title;
+
+            // Đổi trạng thái active
+            const items = document.querySelectorAll(".video-list li");
+            items.forEach(item => item.classList.remove("active"));
+            items[index].classList.add("active");
+        }
+    </script>
+</body>
+</html>
